@@ -8,7 +8,7 @@
 <h2>Installation: </h2>
 <h3>
 
-- Download TheNumber.exe from the 'Releases' tab of this repository.
+- Download TheNumber.exe from the 'Releases' tab of this repository. (or click [here](https://github.com/Juansero29/TheNambe/releases/tag/v1.1) if you're as lazy as I am...)
 - Follow installation steps (click on 'Next' a lot of times)
 - Click on the icon on your desktop and enjoy.
 

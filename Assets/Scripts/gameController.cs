@@ -23,7 +23,7 @@ public class gameController : MonoBehaviour
 
         string nameParameter = "I guessed the number in " + tries + " tries! Try to beat me! ;) "; //This has the length limitation of a tweet! 
         Application.OpenURL(TWITTER_ADDRESS +
-           "?text=" + WWW.EscapeURL(nameParameter + "\n" + "Get the Game:\n" + appStoreLink));
+           "?text=" + WWW.EscapeURL(nameParameter + "\n" + "Get the Game:  " + appStoreLink));
     }
 
     private void Start()
