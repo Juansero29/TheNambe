@@ -9,7 +9,7 @@ public class gameController : MonoBehaviour
     private Text message;
     static private int from;
     static private int to;
-    static private int number;
+    static private int numberToGuess;
     static private int tries;
     private const string TWITTER_ADDRESS = "http://twitter.com/intent/tweet";
     private const string TWEET_LANGUAGE = "en";
@@ -30,7 +30,7 @@ public class gameController : MonoBehaviour
         button = GameObject.Find("Tweet").GetComponent<Button>();
         from = (int)Random.Range(0f, 50f);
         to = (int)Random.Range(51f, 100f);
-        number = (int)Random.Range(from, to);
+        numberToGuess = (int)Random.Range(from, to);
         HideButton();
         message = GameObject.Find("myMessage").GetComponent<Text>();
         StartCoroutine(Wait("", "I'm thinking of a number... ok? So... yeah, you gotta guess it :)"));
@@ -48,20 +48,32 @@ public class gameController : MonoBehaviour
         Compare(int.Parse(input));
     }
 
-    public void Compare(int number_)
+    public void Compare(int guessedNumber)
     {
 
-        if (number_ < number)
+        if (guessedNumber < numberToGuess)
         {
             StartCoroutine(Wait("Nope! It's higher than that! ", "The number is between " + from + " and " + to + " !"));
             tries++;
         }
-        if (number_ > number)
+        if (guessedNumber > numberToGuess)
         {
             StartCoroutine(Wait("Nope! It's smaller than that! ", "The number is between " + from + " and " + to + " !"));
             tries++;
         }
-        if (number_ == number)
+
+        if( guessedNumber < from)
+        {
+            StartCoroutine(Wait("No! That's not even between the numbers I'm telling you!", "The number is between " + from + " and " + to + " !"));
+            tries++;
+        }
+
+        if (guessedNumber > to)
+        {
+            StartCoroutine(Wait("No! Way to high! That's not between the numbers I'm telling you!", "The number is between " + from + " and " + to + " !"));
+            tries++;
+        }
+        if (guessedNumber == numberToGuess)
         {
             tries++;
             message.text = "Congratulations ! You got it in " + tries + " tries! ";
