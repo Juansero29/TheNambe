@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +16,7 @@ public class gameController : MonoBehaviour
     public static string descriptionParam;
     private string appStoreLink = "http://www.YOUROWNAPPLINK.com";
     Button button;
+    InputField playerInputField;
 
     public void ShareToTW(string linkParameter)
     {
@@ -28,11 +29,12 @@ public class gameController : MonoBehaviour
     private void Start()
     {
         button = GameObject.Find("Tweet").GetComponent<Button>();
-        from = (int)Random.Range(0f, 50f);
-        to = (int)Random.Range(51f, 100f);
-        numberToGuess = (int)Random.Range(from, to);
+        playerInputField = GameObject.Find("InputField").GetComponent<InputField>();
+        from = (int)UnityEngine.Random.Range(0f, 50f);
+        to = (int)UnityEngine.Random.Range(51f, 100f);
+        numberToGuess = (int)UnityEngine.Random.Range(from, to);
         HideButton();
-        message = GameObject.Find("myMessage").GetComponent<Text>();
+        message = GameObject.Find("MyMessage").GetComponent<Text>();
         StartCoroutine(Wait("", "I'm thinking of a number... ok? So... yeah, you gotta guess it :)"));
         StartCoroutine(Wait("wait", "wut"));
         StartCoroutine(Wait("huh", "Okay, I got it! The number is between " + from + " and " + to + " !"));
@@ -45,7 +47,16 @@ public class gameController : MonoBehaviour
     }
     public void GetInput(string input)
     {
-        Compare(int.Parse(input));
+        try
+        {
+            Compare(int.Parse(input));
+        }
+        catch (Exception e)
+        {
+            StartCoroutine(Wait("Incorrect input! Don't be fooling 'round kiddo!", "The number is between " + from + " and " + to + " !"));
+            Debug.Log(e.StackTrace);
+
+        }
     }
 
     public void Compare(int guessedNumber)
@@ -54,23 +65,27 @@ public class gameController : MonoBehaviour
         if (guessedNumber < numberToGuess)
         {
             StartCoroutine(Wait("Nope! It's higher than that! ", "The number is between " + from + " and " + to + " !"));
+            playerInputField.text = "";
             tries++;
         }
         if (guessedNumber > numberToGuess)
         {
             StartCoroutine(Wait("Nope! It's smaller than that! ", "The number is between " + from + " and " + to + " !"));
+            playerInputField.text = "";
             tries++;
         }
 
-        if( guessedNumber < from)
+        if (guessedNumber < from)
         {
             StartCoroutine(Wait("No! That's not even between the numbers I'm telling you!", "The number is between " + from + " and " + to + " !"));
+            playerInputField.text = "";
             tries++;
         }
 
         if (guessedNumber > to)
         {
             StartCoroutine(Wait("No! Way to high! That's not between the numbers I'm telling you!", "The number is between " + from + " and " + to + " !"));
+            playerInputField.text = "";
             tries++;
         }
         if (guessedNumber == numberToGuess)
