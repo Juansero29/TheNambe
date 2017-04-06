@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class gameController : MonoBehaviour {
+public class gameController : MonoBehaviour
+{
 
     private Text message;
     static private int from;
@@ -19,14 +20,14 @@ public class gameController : MonoBehaviour {
     public void ShareToTW(string linkParameter)
     {
 
-        string nameParameter = "I GUESSED THE NUMBER IN " + tries + " TRIES ! BEAT ME MADAFACA! "; //this is limited in text length 
+        string nameParameter = "I GUESSED THE NUMBER IN " + tries + " TRIES ! BEAT ME MADAFACA! "; //This has the length limitation of a tweet! 
         Application.OpenURL(TWITTER_ADDRESS +
            "?text=" + WWW.EscapeURL(nameParameter + "\n" + descriptionParam + "\n" + "Get the Game:\n" + appStoreLink));
     }
 
     private void Start()
     {
-        button = GameObject.Find("tweet").GetComponent<Button>();
+        button = GameObject.Find("Tweet").GetComponent<Button>();
         from = (int)Random.Range(0f, 50f);
         to = (int)Random.Range(51f, 100f);
         number = (int)Random.Range(from, to);
@@ -51,7 +52,7 @@ public class gameController : MonoBehaviour {
     {
 
         if (number_ < number)
-            {
+        {
             StartCoroutine(Wait("Nope! It's higher than that! ", "The number is between " + from + " and " + to + " !"));
             tries++;
         }
@@ -60,7 +61,7 @@ public class gameController : MonoBehaviour {
             StartCoroutine(Wait("Nope! It's smaller than that! ", "The number is between " + from + " and " + to + " !"));
             tries++;
         }
-        if(number_ == number)
+        if (number_ == number)
         {
             tries++;
             message.text = "Congratulations ! You got it in " + tries + " tries! ";
