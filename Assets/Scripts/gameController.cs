@@ -14,14 +14,14 @@ public class gameController : MonoBehaviour
     private const string TWITTER_ADDRESS = "http://twitter.com/intent/tweet";
     private const string TWEET_LANGUAGE = "en";
     public static string descriptionParam;
-    private string appStoreLink = "http://www.YOUROWNAPPLINK.com";
+    private string appStoreLink = "https://goo.gl/6xo5Zk";
     Button button;
     InputField playerInputField;
 
     public void ShareToTW(string linkParameter)
     {
 
-        string nameParameter = "I GUESSED THE NUMBER IN " + tries + " TRIES ! BEAT ME MADAFACA! "; //This has the length limitation of a tweet! 
+        string nameParameter = "I guessed the number in " + tries + " tries! Try to beat me! ;) "; //This has the length limitation of a tweet! 
         Application.OpenURL(TWITTER_ADDRESS +
            "?text=" + WWW.EscapeURL(nameParameter + "\n" + descriptionParam + "\n" + "Get the Game:\n" + appStoreLink));
     }

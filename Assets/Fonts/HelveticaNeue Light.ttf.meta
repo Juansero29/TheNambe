@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 433bee751f6df394688b7467a7c90e27
+timeCreated: 1491479413
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: HelveticaNeue
+  fontNames:
+  - HelveticaNeue
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1dd0e28154d529048b362ba58ae007b3, type: 3}
+  - {fileID: 12800000, guid: 24ec1d56fd426094e8f7c75279140718, type: 3}
+  - {fileID: 12800000, guid: 3ad3e6d6ba22e294985c676a04aa4882, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
