@@ -15,5 +15,12 @@
 </h3>
 
 
+<h2>Images: </h2>
+
+![wanna guess?](http://i.imgur.com/7j6ky0U.png "Before guessing...")
 
 
+![wanna guess?](http://i.imgur.com/vTHofOD.png "When guessing...")
+
+
+![wanna guess?](http://i.imgur.com/JYFENWX.png "Guessed! ")
